@@ -14,9 +14,12 @@ class Game {
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+  int GetScore2() const;
+  int GetSize2() const;
 
  private:
   Snake snake;
+  Snake snake2;
   SDL_Point food;
 
   std::random_device dev;
@@ -25,6 +28,7 @@ class Game {
   std::uniform_int_distribution<int> random_h;
 
   int score{0};
+  int score2{0};
 
   void PlaceFood();
   void Update();

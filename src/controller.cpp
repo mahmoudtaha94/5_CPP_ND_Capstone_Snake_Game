@@ -9,7 +9,7 @@ void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
   return;
 }
 
-void Controller::HandleInput(bool &running, Snake &snake) const {
+void Controller::HandleInput(bool &running, Snake &snake, Snake &snake2) const {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
@@ -33,6 +33,26 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
 
         case SDLK_RIGHT:
           ChangeDirection(snake, Snake::Direction::kRight,
+                          Snake::Direction::kLeft);
+          break;
+        // snake 2
+        case SDLK_w:
+          ChangeDirection(snake2, Snake::Direction::kUp,
+                          Snake::Direction::kDown);
+          break;
+
+        case SDLK_s:
+          ChangeDirection(snake2, Snake::Direction::kDown,
+                          Snake::Direction::kUp);
+          break;
+
+        case SDLK_a:
+          ChangeDirection(snake2, Snake::Direction::kLeft,
+                          Snake::Direction::kRight);
+          break;
+
+        case SDLK_d:
+          ChangeDirection(snake2, Snake::Direction::kRight,
                           Snake::Direction::kLeft);
           break;
       }
